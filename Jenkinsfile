@@ -4,7 +4,7 @@ pipeline{
 		stage("Test"){
 		    steps{
 		        echo "Running Unit Test"
-		        sh "python -o unittest fibo_test"
+		        sh "python -m unittest fibo_test"
 		    }
 		}
 		stage("Deploy"){
