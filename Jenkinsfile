@@ -3,11 +3,13 @@ pipeline{
 	stages{
 		stage("Test"){
 		    steps{
+		        echo "Running Unit Test"
 		        sh "python -o unittest fibo_test"
 		    }
 		}
 		stage("Deploy"){
 		    steps{
+		        echo "Deploying Server"
 		        sh "python app.py 8888"
 		    }
 		}
