@@ -5,7 +5,8 @@ pipeline{
 	        steps{
 	            sh "pipenv install"
 	            sh "pipenv shell"
-	            echo "python version: \n$(python --version)"
+	            echo "python version: "
+	            sh "python --version"
 	        }
 	    }
 		stage("Test"){
