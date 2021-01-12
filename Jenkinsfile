@@ -7,12 +7,6 @@ pipeline{
 		        sh "python -m unittest fibo_test"
 		    }
 		}
-		stage("Deploy"){
-		    steps{
-		        echo "Deploying Server"
-		        sh "python app.py 8888"
-		    }
-		}
 	}
 	post {
         always {
@@ -20,13 +14,13 @@ pipeline{
 //             deleteDir() /* clean up our workspace */
         }
         success {
-            echo 'I succeeeded!'
+            echo 'Jenkins Build Succeed'
         }
         unstable {
             echo 'I am unstable :/'
         }
         failure {
-            echo 'I failed :('
+            echo 'Jenkins Build Failed'
         }
         changed {
             echo 'Things were different before...'
