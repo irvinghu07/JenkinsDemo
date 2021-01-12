@@ -1,6 +1,13 @@
 pipeline{
 	agent any
 	stages{
+	    stage("Build"){
+	        steps{
+	            sh "pipenv install"
+	            sh "pipenv shell"
+	            echo "python version: \n$(python --version)"
+	        }
+	    }
 		stage("Test"){
 		    steps{
 		        echo "Running Unit Test"
