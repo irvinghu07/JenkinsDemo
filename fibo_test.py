@@ -13,3 +13,5 @@ class FiboTest(unittest.TestCase):
     def test3(self):
         self.assertEqual(Fibo(30).cal_fibo(), 832040)
 
+    def test5(self):
+        self.assertEqual(Fibo(15).cal_fibo() - Fibo(10).cal_fibo(), 555)

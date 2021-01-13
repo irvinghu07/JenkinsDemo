@@ -1,20 +1,20 @@
 pipeline{
-	agent any
+	agent {
+	    dockerfile true
+	}
 	stages{
 	    stage("Build"){
 	        steps{
-	            sh "pipenv install"
-	            sh "pipenv shell"
-	            echo "python version: "
-	            sh "python --version"
+	            echo "flask version: "
+	            sh "flask --version"
 	        }
 	    }
-		stage("Test"){
-		    steps{
-		        echo "Running Unit Test"
-		        sh "python -m unittest fibo_test"
-		    }
-		}
+// 		stage("Test"){
+// 		    steps{
+// 		        echo "Running Unit Test"
+// 		        sh "python -m unittest fibo_test"
+// 		    }
+// 		}
 	}
 	post {
         always {

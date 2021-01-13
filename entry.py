@@ -1,14 +1,18 @@
 from flask import Flask
 from fibo import Fibo
-import sys
+import socket
 
 app = Flask(__name__)
 PORT = 7777
 
 
+def ip():
+    return socket.gethostbyname(socket.gethostname())
+
+
 @app.route('/hello')
 def hello_world():
-    return 'Hello Jenkins'
+    return f'Hello Jenkins at ip: {ip()}'
 
 
 @app.route('/fibo/<b>')
@@ -16,17 +20,9 @@ def get_fibo(b: str):
     if b.isnumeric():
         fibo = Fibo(int(b, 10))
         out = fibo.cal_fibo()
-        return f"The {fibo.boarder + 1}th elements in fibonacci is :{out}"
-    return "Invalid input"
-
-
-def main():
-    if len(sys.argv) == 2:
-        p = sys.argv[1]
-    else:
-        p = PORT
-    app.run(port=p)
+        return f"The {fibo.boarder}th elements in fibonacci is :{out} at ip:{ip()}"
+    return f"Invalid input at ip:{ip()}"
 
 
 if __name__ == '__main__':
-    main()
+    app.run(host="0.0.0.0")
