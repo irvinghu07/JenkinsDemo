@@ -11,7 +11,6 @@ pipeline{
 		}
 	    stage("Build"){
 	        steps{
-	            echo "flask version: "
 	            sh "flask --version"
 	        }
 	    }
