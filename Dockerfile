@@ -7,6 +7,5 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 WORKDIR /opt/app
 ADD ./requirements.txt .
 RUN pip install -r requirements.txt
-RUN ls
-ADD ./*.py .
+ADD ./*.py ./
 CMD ["flask", "run", "--host", "0.0.0.0"]
