@@ -3,18 +3,18 @@ pipeline{
 	    dockerfile true
 	}
 	stages{
+		stage("Test"){
+		    steps{
+		        echo "Running Unit Test"
+		        sh "python -m unittest fibo_test"
+		    }
+		}
 	    stage("Build"){
 	        steps{
 	            echo "flask version: "
 	            sh "flask --version"
 	        }
 	    }
-// 		stage("Test"){
-// 		    steps{
-// 		        echo "Running Unit Test"
-// 		        sh "python -m unittest fibo_test"
-// 		    }
-// 		}
 	}
 	post {
         always {
