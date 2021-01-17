@@ -4,8 +4,12 @@ ENV LANG en_US.UTF-8
 ENV VIRTUAL_ENV=/opt/venv
 RUN python3 -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+ENV FLASK_APP=app
+ENV FLASK_ENV=development
 WORKDIR /opt/app
 ADD ./requirements.txt .
-RUN pip install -r requirements.txt
+RUN python -m pip install --upgrade pip \
+    pip install -r requirements.txt
 ADD ./*.py ./
-CMD ["flask", "run", "--host", "0.0.0.0"]
+EXPOSE 80
+CMD ["flask", "run", "-h", "0.0.0.0", "-p", "80"]
